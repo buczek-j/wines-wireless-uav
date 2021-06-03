@@ -26,13 +26,23 @@ The list of the off-the-shelf components used in the design of our UAV include:
 
 ### Construction
 
+### Nuc Setup
 
 ### Flight Code
+
+The flight code used for these UAVs is located [here](https://github.com/buczek-j/BasicArducopter/tree/wines-powertest). It uses the Dronekit python library to connect to the UAV via Mavlink messages. 
 
 ## Design Validation
 ### UAV Endurance Testing
 For the endurance testing, [this script](https://github.com/buczek-j/BasicArducopter/blob/wines-powertest/power_test.py) was used to automate the process. The enduracne test outlined in the script is shown below:
+
 ![](https://github.com/buczek-j/wines-wireless-uav/blob/main/doc/UAV_endurance_test.png)
-The UAV took off, performed a loop, and checked if its battery was below the 8S LiPo nominal voltage of 28.8V. If the voltage was below nominal, then the UAV would land, otherwise, it continued for another loop. This method of testing is more accurate to determine the flight time of a UAV as the UAV was contantly in motion. A flight test that would have the UAV hover in place would most likely dislpay an even longer flight time as the UAV would not need to adjust motor speeds for motion or altitude changes. 
+
+The UAV took off, performed a loop, and checked if its battery was below the 8S LiPo nominal voltage of 28.8V. If the voltage was below nominal, then the UAV would land, otherwise, it continued for another loop. The flight time and battery capacities were recorded and the capacities were confirmed via charging again. These values were used to calculate the total flight time of the UAV.
+
+This process was repeated for multiple payload weights.
+
+ This method of testing is more accurate to determine the flight time of a UAV as the UAV was contantly in motion. A flight test that would have the UAV hover in place would most likely dislpay an even longer flight time as the UAV would not need to adjust motor speeds for motion or altitude changes. 
 
 ### UAV GPS Interference
+To determine the GPS interference caused by external electronics, the Pixhawk logs were analyzed. For each electronics and sheilding configuration, the UAV was armed on the ground, we waited until the desired time passed, and then the UAV was disarmed. The order of the configurations was recorded. After testing, the log files of the Pixhawk were [downloaded](https://ardupilot.org/copter/docs/common-downloading-and-analyzing-data-logs-in-mission-planner.html) from the UAV and using mission planner, .MAT files were generated from the logs. The .MAT files were parsed based on the Arming and Disarming messages and the Horizonal Dilution of Position (HDOP) of each configuration was separated. For our analysis, the HDOP recordings throughout each configuration's testing interval were averaged and the averaged HDOPs were compared. Four our testing, interval periods of 3 minutes were used. The script that we used to parse the .MAT files was [TODO]().
