@@ -25,6 +25,7 @@ The list of the off-the-shelf components used in the design of our UAV include:
 * [3D Printer](https://www.amazon.com/LulzBot-B07PFQQSR9-TAZ-Workhorse-Edition/dp/B07PFQQSR9/ref=sr_1_4?dchild=1&keywords=lulzbot&qid=1622753689&sr=8-4)
 
 ### Construction
+![](https://github.com/buczek-j/wines-wireless-uav/blob/main/doc/construction/Iflight_Assembly.gif)
 
 ### Nuc Setup
 
